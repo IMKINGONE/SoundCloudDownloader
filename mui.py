@@ -40,13 +40,12 @@ def get_id(url):
     remove = part.removesuffix('"')
     
 def details(url):
-    regex = r"https://api-mobi.soundcloud.com/media/soundcloud:tracks:1596642375/.*?/"
+    regex = rf"https://api-mobi.soundcloud.com/media/soundcloud:tracks:{remove}/.*?/"
     center = re.search(regex,response.text)
     need = center.group(0)
     Splitting = need.split('/')
     global save
     save = Splitting[5].strip()
-    
 
 def make_url():
     url = f"https://api-mobi.soundcloud.com/media/soundcloud:tracks:{remove}/{save}/stream/hls?client_id={result_client}&track_authorization={result_authorization}"
@@ -85,7 +84,7 @@ def sendreq():
 def parsing():
     m3u8_pars = m3u8.loads(get_links)
     kos = m3u8_pars.data['segments']
-    with open('ple4ase.mp3','ab') as f:
+    with open('p2le4ase.mp3','ab') as f:
        for k in kos:
           url = k['uri']
           response_url = session.get(url)
