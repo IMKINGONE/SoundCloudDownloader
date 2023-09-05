@@ -84,7 +84,7 @@ def sendreq():
 def parsing():
     m3u8_pars = m3u8.loads(get_links)
     kos = m3u8_pars.data['segments']
-    with open('p2le4ase.mp3','ab') as f:
+    with open('iio544444oooe.mp3','ab') as f:
        for k in kos:
           url = k['uri']
           response_url = session.get(url)
@@ -98,8 +98,13 @@ def parsing():
  
     
 if __name__ == '__main__':
-    url = input('Link music: ')
-    track_authorization(url)
+    link = input('Link music: ')
+    if link.startswith("https://soundcloud.com/") == True:
+        url = link.replace("https://soundcloud.com/","https://m.soundcloud.com/")
+        track_authorization(url)
+    else:
+        url = link
+        track_authorization(url)
     client_id(url)
     get_id(url)
     details(url)
@@ -108,4 +113,5 @@ if __name__ == '__main__':
     parsing()
 
     
+
     
